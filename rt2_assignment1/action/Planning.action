@@ -1,0 +1,18 @@
+# Define the goal
+float32 x
+float32 y
+float32 theta
+---
+# Define the result
+bool ok
+---
+# Define a feedback message
+float32 actualx
+float32 actualy
+float32 actualtheta
+
+
+
+
+
+
