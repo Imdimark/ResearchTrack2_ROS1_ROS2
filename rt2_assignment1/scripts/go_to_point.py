@@ -12,18 +12,17 @@ import actionlib
 import actionlib.msg
 import rt2_assignment1.msg
 
-
-
-
-# robot state variables
 position_ = Point()
 pose_ = Pose()
 yaw_ = 0
+
 position_ = 0
 state_ = 0
+#sub_odom = None
 pub_ = None
 server = None
 desired_position = Point()
+desired_position.z = 0
 # parameters for control
 yaw_precision_ = math.pi / 9  # +/- 20 degree allowed
 yaw_precision_2_ = math.pi / 90  # +/- 2 degree allowed
@@ -35,13 +34,10 @@ lb_a = -0.5
 ub_d = 0.6
 
 def clbk_odom(msg):
-    global position_
+    global position_, pose_
     global yaw_
-
-    # position
     position_ = msg.pose.pose.position
-
-    # yaw
+    pose_ = msg.pose.pose
     quaternion = (
         msg.pose.pose.orientation.x,
         msg.pose.pose.orientation.y,
@@ -50,12 +46,10 @@ def clbk_odom(msg):
     euler = transformations.euler_from_quaternion(quaternion)
     yaw_ = euler[2]
 
-
 def change_state(state):
     global state_
     state_ = state
     print ('State changed to [%s]' % state_)
-
 
 def normalize_angle(angle):
     if(math.fabs(angle) > math.pi):
@@ -63,6 +57,7 @@ def normalize_angle(angle):
     return angle
 
 def fix_yaw(des_pos):
+    global yaw_precision_2_, yaw, pub, state_
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
     err_yaw = normalize_angle(desired_yaw - yaw_)
     rospy.loginfo(err_yaw)
@@ -76,11 +71,12 @@ def fix_yaw(des_pos):
     pub_.publish(twist_msg)
     # state change conditions
     if math.fabs(err_yaw) <= yaw_precision_2_:
-        #print ('Yaw error: [%s]' % err_yaw)
+        print ('Yaw error: [%s]' % err_yaw)
         change_state(1)
 
 
 def go_straight_ahead(des_pos):
+    global yaw_precision_, yaw, pub, state_
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
     err_yaw = desired_yaw - yaw_
     err_pos = math.sqrt(pow(des_pos.y - position_.y, 2) +
@@ -97,15 +93,16 @@ def go_straight_ahead(des_pos):
         twist_msg.angular.z = kp_a*err_yaw
         pub_.publish(twist_msg)
     else: # state change conditions
-        #print ('Position error: [%s]' % err_pos)
+        print ('Position error: [%s]' % err_pos)
         change_state(2)
 
     # state change conditions
     if math.fabs(err_yaw) > yaw_precision_:
-        #print ('Yaw error: [%s]' % err_yaw)
+        print ('Yaw error: [%s]' % err_yaw)
         change_state(0)
 
 def fix_final_yaw(des_yaw):
+    global yaw_precision_2_, yaw, pub, state_
     err_yaw = normalize_angle(des_yaw - yaw_)
     rospy.loginfo(err_yaw)
     twist_msg = Twist()
@@ -133,14 +130,12 @@ def go_to_point(goal):
     rate = rospy.Rate(1)
     desired_position.x = goal.target_pose.pose.position.x
     desired_position.y = goal.target_pose.pose.position.y
-    desired_position.z= goal.target_pose.pose.orientation.w
-    change_state(0)
-    success = True
+    #desired_position.z= goal.target_pose.pose.orientation.w
+    state = 0
+    #change_state(0)
+    #success = True
     
     feedback = rt2_assignment1.msg.PlanningFeedback()
-    
-    
-    
     result = rt2_assignment1.msg.PlanningResult()
     while not rospy.is_shutdown():
         if server.is_preempt_requested():
@@ -162,6 +157,7 @@ def go_to_point(goal):
             feedback.stat = "Target reached!"
             feedback.actual_pose = pose_
             server.publish_feedback(feedback)
+            success = True
             done()
             break
         else:
@@ -172,7 +168,7 @@ def go_to_point(goal):
         rospy.loginfo('Goal: Succeeded!')
         server.set_succeeded(result)
 
-    while True:
+    """while True:
     	if state_ == 0:
     	    fix_yaw(desired_position)
     	elif state_ == 1:
@@ -182,21 +178,18 @@ def go_to_point(goal):
     	elif state_ == 3:
     	    done()
     	    break
-    return True
+    return True"""
 
 def main():
-    global pub_, server, active_
+    global pub_, server
     rospy.init_node('go_to_point')
+    
     pub_ = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
     sub_odom = rospy.Subscriber('/odom', Odometry, clbk_odom)
-    
-    
     server = actionlib.SimpleActionServer('/reaching_goal', rt2_assignment1.msg.PlanningAction, go_to_point, auto_start=False)  
-    server.start()
     
-   
+    server.start()
     rate = rospy.Rate(20)
-
     while not rospy.is_shutdown():
         rate.sleep()
     #rospy.spin()
