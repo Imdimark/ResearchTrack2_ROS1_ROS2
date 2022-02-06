@@ -127,11 +127,11 @@ def done():
 #def go_to_point(req):
 def go_to_point(goal):
     global desired_position, server, state_
-    rate = rospy.Rate(1)
+    rate = rospy.Rate(20)
     desired_position.x = goal.target_pose.pose.position.x
     desired_position.y = goal.target_pose.pose.position.y
     #desired_position.z= goal.target_pose.pose.orientation.w
-    state = 0
+    state_ = 0
     #change_state(0)
     #success = True
     
