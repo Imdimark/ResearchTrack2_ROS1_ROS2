@@ -18,3 +18,4 @@ Aprire tre terminali:
 ```
 
 
+https://github.com/ros2/ros1_bridge
