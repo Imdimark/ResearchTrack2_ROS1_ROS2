@@ -11,6 +11,8 @@ colcon buoid della workspace di ros2 (richiede molto tempo)
 
 Lancio:
 Aprire tre terminali:
+...
 1)source ros.sh quindi lanciare roslaunch rt2_assignment1 sim_interactionROS2.launch
 2)source ros2.sh quindi lanciare ros2 launch rt2_assignment1 launch.py
 3)source ros12.sh quindi lanciare   ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+...
