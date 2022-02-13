@@ -1,7 +1,8 @@
 //#include "ros/ros.h"
-#include "rt2_assignment1/srv/random_position.hpp"
 #include <inttypes.h>
 #include <memory>
+#include <functional>
+#include "rt2_assignment1/srv/random_position.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
@@ -21,7 +22,7 @@ class Position_Service : public rclcpp::Node
     public:
 
       Position_Service(const rclcpp::NodeOptions & options)
-      : Node("position_Service", options)
+      : Node("servpos", options)
       {
            service_rand = this->create_service<service3>("/position_server", std::bind(&Position_Service::handle_service, this, _1, _2, _3)); 
       }

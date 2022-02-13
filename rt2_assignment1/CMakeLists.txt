@@ -28,34 +28,36 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/RandomPosition.srv"
   "srv/Command.srv"
  )
+ 
+add_library(PositionService_component SHARED
+  src/position_service.cpp)
 
 add_library(FSM_component SHARED
   src/state_machine.cpp)
-  
-add_library(Position_Service_component SHARED
-  src/position_service.cpp)
  
-rosidl_target_interfaces(FSM_component ${PROJECT_NAME} "rosidl_typesupport_cpp")
-
-rosidl_target_interfaces(Position_Service_component ${PROJECT_NAME} "rosidl_typesupport_cpp")
-
-
-rclcpp_components_register_node(Position_Service_component
+rclcpp_components_register_node(PositionService_component
   PLUGIN "rt2_assignment1::Position_Service"
-  EXECUTABLE comp_Position_Service)
+  EXECUTABLE comp_PositionService)
 
 rclcpp_components_register_node(FSM_component
   PLUGIN "rt2_assignment1::FSM"
   EXECUTABLE comp_FSM)
-
+ 
+ament_target_dependencies(PositionService_component rclcpp rclcpp_components std_msgs)
 ament_target_dependencies(FSM_component rclcpp rclcpp_components std_msgs)
-ament_target_dependencies(Position_Service_component rclcpp rclcpp_components std_msgs)
+
+
+
+rosidl_target_interfaces(PositionService_component ${PROJECT_NAME} "rosidl_typesupport_cpp")
+rosidl_target_interfaces(FSM_component ${PROJECT_NAME} "rosidl_typesupport_cpp")
+
+
 
 install(TARGETS
 	FSM_component
 	comp_FSM
-  	Position_Service_component
-  	comp_Position_Service
+  	PositionService_component
+  	comp_PositionService
   	DESTINATION lib/${PROJECT_NAME}
   	LIBRARY DESTINATION lib)
   
@@ -63,6 +65,7 @@ install(
   DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
+
 install(
    FILES mapping_rules.yaml
    DESTINATION share/${PROJECT_NAME})

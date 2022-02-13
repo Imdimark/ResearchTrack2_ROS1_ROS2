@@ -28,7 +28,7 @@ class FSM : public rclcpp::Node
 public:
 
   FSM(const rclcpp::NodeOptions & options)
-  : Node("finite_state_machine", options)
+  : Node("state_machine", options)
   {
     ////////////////////////////////////
      service_ui = this->create_service<service1>(
@@ -75,7 +75,7 @@ public:
     
     bool start = false;
     
-    void finite_state_machine (){
+    void finitestatemachine (){
     
                 if (this->start){
 	   	 auto req2 = std::make_shared<client2::Request>();
@@ -83,13 +83,7 @@ public:
 		 req2->x_max = 5.0;
 		 req2->x_min = -5.0;
 		 req2->y_max = 5.0;
-		 req2->y_min = -5.0;
-		 
-		 
-		 
-		 
-		 
-		 
+		 req2->y_min = -5.0;	 
 		 auto callback = [this](rclcpp::Client<client2>::SharedFuture future ) {
 		         auto req = std::make_shared<client1::Request>();
 		         this->response_rand=future.get();
@@ -104,7 +98,7 @@ public:
 		         auto response_received_callback = [this](rclcpp::Client<client1>::SharedFuture future) { //invio a go_to_point
 		                                (void)future;
 		                                std::cout << "Position reached" << std::endl;
-		                                this->finite_state_machine();
+		                                this->finitestatemachine();
             
                 };
                 
@@ -135,7 +129,7 @@ public:
   
     	         this->start = true; //setti start a true
     	         
-    	         this->finite_state_machine();
+    	         this->finitestatemachine();
               }
               else {
     	          this->start = false;
