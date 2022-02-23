@@ -29,13 +29,17 @@ The launch file will open:
 
 ## How to run:
 
-``` Source ros.sh
+``` 
+Source ros.sh
 roscore &
 cd name_workspace
 catkinmake
-roslaunch ```
+roslaunch 
+```
 
 In an other shell:
-``` Source ros.sh
+``` 
+Source ros.sh
 roscore &
-./copelliasim.sh ```
+./copelliasim.sh 
+```
