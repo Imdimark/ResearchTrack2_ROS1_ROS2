@@ -3,10 +3,10 @@
 
 Inside the package:
 1. Launch folder, it contains two different files:
-2.  sim.launch
-3. Script folder
-4. Src folder
-5. Urdf
+* sim.launch
+2. Script folder
+3. Src folder
+4. Urdf
 
 You will launch:
 * the simulation environment
