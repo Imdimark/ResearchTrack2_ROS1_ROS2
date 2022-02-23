@@ -23,9 +23,9 @@ Inside the package you download from the **main** branch, there are the followin
 You will launch:
 * the simulation environment (Gazebo)
 * the node PositionServer, which implements a random position service
-* the node GoToPoint, which implements a service to drive a robot toward a point in the environment
-* the node FSM, which implements a service to start or stop the robot, and calls the other two services to drive the robot
-* the UserInterface, which asks the user to start/stop the robot, and calls the service implemented in the FSM node
+* the node GoToPoint, which implements an action to drive a robot toward a point in the environment
+* the node FSM, which implements a service to start or stop the robot, a service to retrive the random position and calls the action 
+* the UserInterface, which asks the user to start/stop the robot
 
 
 
