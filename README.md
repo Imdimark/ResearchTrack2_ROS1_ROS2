@@ -3,7 +3,7 @@
 
 Inside the package:
 1. Launch folder, it contains two different files:
-**sim.launch
+** sim.launch
 3. Script folder
 4. Src folder
 5. Urdf
