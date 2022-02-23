@@ -27,13 +27,15 @@ The launch file will open:
 - a Gazebo simulation with a simple mobile robot
 - four nodes which implement the robot’s behaviourv
 
-Source ros.sh
+## How to run:
+
+``` Source ros.sh
 roscore &
 cd name_workspace
 catkinmake
-roslaunc
+roslaunch ```
 
-in un'altra finestra
-Source ros.sh
+In an other shell:
+``` Source ros.sh
 roscore &
-./copelliasim.sh
+./copelliasim.sh ```
