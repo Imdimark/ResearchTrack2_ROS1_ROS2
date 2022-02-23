@@ -1,12 +1,20 @@
 # Research track 2 
 ## assignment 1
 
-Inside the package, there are the following folders:
-1. launch it contains two different files: sim.launch (for ROS1 simulation) and sim_interactionROS2.launch (for both ROS1 and ROS2 simulation)
-2. scripts that contains the python code
-3. src that contains the C++ code
-4. urdf 
-5. srv that contains the custom services
+In this repository you can find six different folders:
+1. main
+2. ROS2
+3. action
+4. Jupyter
+5. Shinx
+6. Docigen
+
+Inside the package you download from the **main** branch, there are the following folders:
+1. **launch** it contains two different files: sim.launch (for ROS1 simulation) and sim_interactionROS2.launch (if you use also the **ROS2** repository package)
+2. **scripts** that contains the python code
+3. **src** that contains the C++ code
+4. **urdf** 
+5. **srv** that contains the custom services
 
 You will launch:
 * the simulation environment (Gazebo)
