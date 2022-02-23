@@ -1,7 +1,8 @@
-# Research track 2/ assignment 1
+# Research track 2 _ assignment 1
 
 
 ## Required packages:
+* main branch of this repository --> ``` git clone https://github.com/Imdimark/rt2 -b main
 
 Inside the package you download from the **main** branch, there are the following folders:
 1. **launch** it contains two different files: sim.launch (for ROS1 simulation) and sim_interactionROS2.launch (if you use also the **ROS2** repository package)
