@@ -31,7 +31,7 @@ source ros.sh
 roscore &
 cd name_workspace
 catkinmake
-roslaunch 
+roslaunch rt2_assignment1 sim.launch
 ```
 
 In addition you can run the simulation in Copellia.
