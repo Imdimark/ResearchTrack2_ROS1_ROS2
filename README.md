@@ -2,7 +2,7 @@
 
 
 ## Required packages:
-* main branch of this repository --> ``` git clone https://github.com/Imdimark/rt2 -b main
+* main branch of this repository --> ``` git clone https://github.com/Imdimark/rt2 -b main ```
 * CoppeliaSim --> https://www.coppeliarobotics.com/downloads
 
 ## The description of the system
