@@ -21,11 +21,11 @@ Inside the package you download from the **main** branch, there are the followin
 ![Immagine-2022-02-23-213550](https://user-images.githubusercontent.com/78663960/155404294-9bd9a28f-3349-44f3-9810-2b8b5b29fa8d.jpg)
 
 You will launch:
-* the simulation environment (Gazebo)
-* the node PositionServer, which implements a random position service
-* the node GoToPoint, which implements an action to drive a robot toward a point in the environment
-* the node FSM, which implements a service to start or stop the robot, a service to retrive the random position and calls the action 
-* the UserInterface, which asks the user to start/stop the robot
+* the **simulation environment** (Gazebo)
+* the node **random_position_server**, which implements a random position service
+* the node **go_to_point**, which implements an action to drive a robot toward a point in the environment
+* the node **state_machine**, which implements a service to start or stop the robot
+* the **user_interface**, which asks the user to start/stop the robot
 
 
 
