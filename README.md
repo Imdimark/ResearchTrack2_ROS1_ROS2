@@ -7,12 +7,18 @@
 * ros2/ros1_bridge -->``` git clone https://github.com/ros2/ros1_bridge ```
 
 ## The description of the system
+The system consists of three parts:
+### ROS1
 Inside the package you download from the **main** branch, there are the following folders:
-1. **launch** it contains two different files: sim.launch (for ROS1 simulation) and sim_interactionROS2.launch (if you use also the **ROS2** repository package)
-2. **scripts** that contains the python code
+1. **scripts** that contains the python code
+
+### ROS2
+Inside the package you download from the **ROS2** branch, there are the following folders:
+2. **launch** it contains two different files: sim.launch (for ROS1 simulation) and sim_interactionROS2.launch (if you use also the **ROS2** repository package)
 3. **src** that contains the C++ code
 4. **urdf** 
 5. **srv** that contains the custom services
+### BRIDGE
 A network bridge which enables the exchange of messages between ROS 1 and ROS 2.
 
 ![Immagine-2022-02-23-213550](https://user-images.githubusercontent.com/78663960/155404294-9bd9a28f-3349-44f3-9810-2b8b5b29fa8d.jpg)
