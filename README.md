@@ -7,6 +7,9 @@
 * ros2/ros1_bridge -->``` git clone https://github.com/ros2/ros1_bridge ```
 
 ## The description of the system
+![Immagine-2022-02-23-213550](https://user-images.githubusercontent.com/78663960/155404294-9bd9a28f-3349-44f3-9810-2b8b5b29fa8d.jpg)
+
+
 The system consists of three parts:
 ### ROS1
 Inside the package you download from the **main** branch, there are the following folders:
@@ -21,14 +24,13 @@ Inside the package you download from the **ROS2** branch, there are the followin
 ### BRIDGE
 A network bridge which enables the exchange of messages between ROS 1 and ROS 2.
 
-![Immagine-2022-02-23-213550](https://user-images.githubusercontent.com/78663960/155404294-9bd9a28f-3349-44f3-9810-2b8b5b29fa8d.jpg)
-
 You will launch:
 * the simulation environment (Gazebo)
 * the node PositionServer, which implements a random position service
 * the node GoToPoint, which implements a service to drive a robot toward a point in the environment
 * the node FSM, which implements a service to start or stop the robot, and calls the other two services to drive the robot
 * the UserInterface, which asks the user to start/stop the robot, and calls the service implemented in the FSM node
+* the bridge
 
 The two images below represent ROS1 nodes and ROS2 nodes respectively
 ![rosgraph_1](https://user-images.githubusercontent.com/78663960/155629183-772cb67b-4e40-4a29-ad06-a05673b67f34.png)
