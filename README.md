@@ -29,6 +29,8 @@ You will launch:
 * the node GoToPoint, which implements a service to drive a robot toward a point in the environment
 * the node FSM, which implements a service to start or stop the robot, and calls the other two services to drive the robot
 * the UserInterface, which asks the user to start/stop the robot, and calls the service implemented in the FSM node
+
+The two images below represent ROS1 nodes and ROS2 nodes respectively
 ![rosgraph_1](https://user-images.githubusercontent.com/78663960/155629183-772cb67b-4e40-4a29-ad06-a05673b67f34.png)
 ![rosgraph_2](https://user-images.githubusercontent.com/78663960/155629200-596f122c-f054-4b10-b459-383392496b89.png)
 
