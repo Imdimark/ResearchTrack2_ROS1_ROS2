@@ -1,0 +1,48 @@
+\hypertarget{state__machine_8cpp}{}\doxysection{src/state\+\_\+machine.cpp File Reference}
+\label{state__machine_8cpp}\index{src/state\_machine.cpp@{src/state\_machine.cpp}}
+
+
+This files implements the state\+\_\+machine node, the client\+\_\+gui and both the services service\+\_\+ui and service\+\_\+ui service\+\_\+and.  
+
+
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/srv/random\+\_\+position.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/srv/position.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/srv/command.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rclcpp/rclcpp.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rclcpp\+\_\+components/register\+\_\+node\+\_\+macro.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cinttypes$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classrt2__assignment1_1_1_f_s_m}{rt2\+\_\+assignment1\+::\+FSM}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{state__machine_8cpp_ad6e5e6a0a1bcfb8a92899d80cd22e275}\label{state__machine_8cpp_ad6e5e6a0a1bcfb8a92899d80cd22e275}} 
+using {\bfseries service1} = rt2\+\_\+assignment1\+::srv\+::\+Command
+\item 
+\mbox{\Hypertarget{state__machine_8cpp_a700d2b5f95c1af8d35af6112226ce975}\label{state__machine_8cpp_a700d2b5f95c1af8d35af6112226ce975}} 
+using {\bfseries client1} = rt2\+\_\+assignment1\+::srv\+::\+Position
+\item 
+\mbox{\Hypertarget{state__machine_8cpp_a2eabbf75ff8bd7e6e8851ecada08cb72}\label{state__machine_8cpp_a2eabbf75ff8bd7e6e8851ecada08cb72}} 
+using {\bfseries client2} = rt2\+\_\+assignment1\+::srv\+::\+Random\+Position
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files implements the state\+\_\+machine node, the client\+\_\+gui and both the services service\+\_\+ui and service\+\_\+ui service\+\_\+and. 
+
+\begin{DoxyAuthor}{Author}
+Giovanni Di Marco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27/02/2022 
+\end{DoxyDate}
