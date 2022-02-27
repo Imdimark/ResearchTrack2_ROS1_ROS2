@@ -1,4 +1,11 @@
-//#include "ros/ros.h"
+/**
+* \file position_service.cpp
+* \brief This files implements the servpos node and the service service_rand
+* \author Giovanni Di Marco
+* \version 0.1
+* \date 27/02/2022
+*
+**/
 #include <inttypes.h>
 #include <memory>
 #include <functional>
@@ -16,9 +23,15 @@ using service3 = rt2_assignment1::srv::RandomPosition;
 
 namespace rt2_assignment1{
 
+/*! Position_Service Class:
+*The architecture chosen to write the nodes of ROS2 is to create them as components, classes like this, that are loaded.
+*This class implements the random generation of a position, when it is triggered and receives in imput a minimum and a maximum.
+*/
 class Position_Service : public rclcpp::Node
 {
-
+    /** Initialisation of the service. 
+    * service_rand which is called by the FSM node
+    */
     public:
 
       Position_Service(const rclcpp::NodeOptions & options)
@@ -28,7 +41,14 @@ class Position_Service : public rclcpp::Node
       }
 
     private:
-  
+
+     /**Handle_service function
+    *
+    * The request is sent, with a minimum and a maximum, when you need a new random location to reach.
+    * @param request_header
+    * @param request 
+    * @param response 
+    */
     void handle_service(
     const std::shared_ptr<rmw_request_id_t> request_header,
     const std::shared_ptr<service3::Request> request,
