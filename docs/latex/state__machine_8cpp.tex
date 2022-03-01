@@ -1,0 +1,110 @@
+\hypertarget{state__machine_8cpp}{}\doxysection{src/state\+\_\+machine.cpp File Reference}
+\label{state__machine_8cpp}\index{src/state\_machine.cpp@{src/state\_machine.cpp}}
+
+
+this code implements the state\+\_\+machine node  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Twist.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/\+Command.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/\+Position.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/\+Random\+Position.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$rt2\+\_\+assignment1/\+Planning\+Action.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/simple\+\_\+action\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/terminal\+\_\+state.\+h$>$}\newline
+{\ttfamily \#include $<$std\+\_\+msgs/\+Float64.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{state__machine_8cpp_a1a9543636935547580c0657f4c7c0c2b}{user\+\_\+interface}} (rt2\+\_\+assignment1\+::\+Command\+::\+Request \&req, rt2\+\_\+assignment1\+::\+Command\+::\+Response \&res)
+\begin{DoxyCompactList}\small\item\em this is the callback of the server /user\+\_\+interface. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{state__machine_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{state__machine_8cpp_ab376b87f96a574a793c03c53e75afec8}\label{state__machine_8cpp_ab376b87f96a574a793c03c53e75afec8}} 
+bool {\bfseries start} = false
+\item 
+\mbox{\Hypertarget{state__machine_8cpp_a7ad5255f64c97f0121ae1a81d02608cb}\label{state__machine_8cpp_a7ad5255f64c97f0121ae1a81d02608cb}} 
+int {\bfseries stato} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this code implements the state\+\_\+machine node 
+
+\begin{DoxyAuthor}{Author}
+Giovanni Di Marco ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27/02/2022
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ None
+
+Publishes to\+: ~\newline
+ /cmd\+\_\+vel
+
+Client\+: ~\newline
+ /position\+\_\+server
+
+Actiom Client\+: ~\newline
+ /reaching\+\_\+goal
+
+Services\+: ~\newline
+ /user\+\_\+interface
+
+Description\+:
+
+By means of an user interface, the user is able of making the robot starts by entering the 1 integer value, the robot starts moving. There is one boolean value which becomes true and then call the\begin{DoxyVerb}position_service.cpp  \end{DoxyVerb}
+ which retrieves the random goal position to reach from the Random\+Position.\+srv custom service, sends the random position as the action server goal, waits for the robot to reach the designated position 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{state__machine_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{state__machine_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{state\_machine.cpp@{state\_machine.cpp}!main@{main}}
+\index{main@{main}!state\_machine.cpp@{state\_machine.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & This function declare\+: publisher, action, client and server used by the state machine. a finite state machine, with 3 states has been implemented. You can start, receive feedback and stop the simulation.\\
+\hline
+\end{DoxyRetVals}
+Description of the states\+: From state 0 you can, through user command, go to state 1 and start the simulation or stay blocked. From state 1 you can wait and reach the goal and turn back in state 0 in this way starts the next goal or you can block the simulation (velocity set to 0 andcancel the goal) and turn back in state 0 From state 3 you can restart the cicle only if a start command is received \mbox{\Hypertarget{state__machine_8cpp_a1a9543636935547580c0657f4c7c0c2b}\label{state__machine_8cpp_a1a9543636935547580c0657f4c7c0c2b}} 
+\index{state\_machine.cpp@{state\_machine.cpp}!user\_interface@{user\_interface}}
+\index{user\_interface@{user\_interface}!state\_machine.cpp@{state\_machine.cpp}}
+\doxysubsubsection{\texorpdfstring{user\_interface()}{user\_interface()}}
+{\footnotesize\ttfamily bool user\+\_\+interface (\begin{DoxyParamCaption}\item[{rt2\+\_\+assignment1\+::\+Command\+::\+Request \&}]{req,  }\item[{rt2\+\_\+assignment1\+::\+Command\+::\+Response \&}]{res }\end{DoxyParamCaption})}
+
+
+
+this is the callback of the server /user\+\_\+interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & request from the user through the choise made in the \mbox{\hyperlink{namespaceuser__interface}{user\+\_\+interface}} node \\
+\hline
+{\em res} & ~\newline
+\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em boolean} & value\\
+\hline
+\end{DoxyRetVals}
+There are 3 states\+: 0 -\/-\/$>$ initial state of the cicle 1 -\/-\/$>$ start trigger has been received, in this phase a random position is reached and sent through a goal 2 -\/-\/$>$ goal has ben sent, a feedback is received untill phase 3 3 -\/-\/$>$ goal has been reached successfully
+
+In this function the state 0 ( the start of the cicle) is allowed only if is the first iteration else if the goal is reached else if the goal is cancelled The stop command block the cicle, velocity will be zero and the goal is going to be deleted. 
