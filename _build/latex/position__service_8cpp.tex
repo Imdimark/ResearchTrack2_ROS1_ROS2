@@ -1,0 +1,114 @@
+\hypertarget{position__service_8cpp}{}\doxysection{src/position\+\_\+service.cpp File Reference}
+\label{position__service_8cpp}\index{src/position\_service.cpp@{src/position\_service.cpp}}
+
+
+this code implements the random\+\_\+position\+\_\+server node  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/\+Random\+Position.\+h\char`\"{}}\newline
+Include dependency graph for position\+\_\+service.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{position__service_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}{rand\+M\+ToN}} (double M, double N)
+\begin{DoxyCompactList}\small\item\em function that generates randomic couple of numbers in the inteval M and N \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}{myrandom}} (rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Request \&req, rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Response \&res)
+\begin{DoxyCompactList}\small\item\em Callback of the service, it is triggered. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this code implements the random\+\_\+position\+\_\+server node 
+
+\begin{DoxyAuthor}{Author}
+Giovanni Di Marco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27/02/2022
+\end{DoxyDate}
+Subscribes to\+: ~\newline
+ None
+
+Publishes to\+: ~\newline
+ None
+
+Services\+: ~\newline
+ /position\+\_\+server
+
+Description\+: ~\newline
+
+
+implements the random generation of a position, when it is triggered and receives in imput a minimum and a maximum 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{position\_service.cpp@{position\_service.cpp}!main@{main}}
+\index{main@{main}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Main. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Here there are the initialization of the node and the Service\+Server, triggered by the client. The callback starts when the request has been done. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}\label{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}} 
+\index{position\_service.cpp@{position\_service.cpp}!myrandom@{myrandom}}
+\index{myrandom@{myrandom}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{myrandom()}{myrandom()}}
+{\footnotesize\ttfamily bool myrandom (\begin{DoxyParamCaption}\item[{rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Request \&}]{req,  }\item[{rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Response \&}]{res }\end{DoxyParamCaption})}
+
+
+
+Callback of the service, it is triggered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & the request within the max and the min \\
+\hline
+{\em res} & the response\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em the} & boolean True \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}\label{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}} 
+\index{position\_service.cpp@{position\_service.cpp}!randMToN@{randMToN}}
+\index{randMToN@{randMToN}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{randMToN()}{randMToN()}}
+{\footnotesize\ttfamily double rand\+M\+ToN (\begin{DoxyParamCaption}\item[{double}]{M,  }\item[{double}]{N }\end{DoxyParamCaption})}
+
+
+
+function that generates randomic couple of numbers in the inteval M and N 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & minimum of the interval \\
+\hline
+{\em N} & maximum of the interval \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em random} & number, it is a double \\
+\hline
+\end{DoxyRetVals}
